@@ -1,0 +1,25 @@
+{
+  "name": "@mikrocms/swagger",
+  "version": "1.0.0",
+  "description": "Package swagger ui mikrocms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikrocms/swagger.git"
+  },
+  "keywords": [
+    "mikrocms"
+  ],
+  "author": "mikrocms",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikrocms/swagger/issues"
+  },
+  "homepage": "https://github.com/mikrocms/swagger#readme",
+  "dependencies": {
+    "@mikrocms/core": "^1.0.0"
+  }
+}

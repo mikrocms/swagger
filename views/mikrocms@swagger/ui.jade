@@ -1,0 +1,62 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    title Swagger UI
+    link(rel="stylesheet", type="text/css", href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.18.3/swagger-ui.css")
+    style.
+      html {
+        box-sizing: border-box;
+        overflow: -moz-scrollbars-vertical;
+        overflow-y: scroll;
+      }
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      body {
+        margin: 0;
+        background: #fafafa;
+      }
+  body
+    #swagger-ui
+    script(src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.18.3/swagger-ui-bundle.js")
+    script(src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@4.18.3/swagger-ui-standalone-preset.js")
+    script.
+      window.addEventListener('DOMContentLoaded', function () {
+        const ui = SwaggerUIBundle({
+          urls: !{JSON.stringify(swaggerURLS)},
+          dom_id: '#swagger-ui',
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset
+          ],
+          layout: "StandaloneLayout",
+          onComplete: function () {
+            addServers();
+          }
+        });
+
+        window.ui = ui;
+
+        function addServers() {
+          try {
+            const servers = !{JSON.stringify(swaggerServers)};
+            const domSelect = document.querySelector('.servers select');
+
+            const selects = document.createDocumentFragment();
+
+            for (var server of servers) {
+              const option = document.createElement('option');
+              
+              option.value = server.url;
+              option.innerHTML = `${server.url} - ${server.description}`;
+
+              selects.appendChild(option);
+            }
+
+            domSelect.appendChild(selects);
+          } catch (err) {
+            console.error(`could not modified servers ${err}`)
+          }
+        }
+      });
